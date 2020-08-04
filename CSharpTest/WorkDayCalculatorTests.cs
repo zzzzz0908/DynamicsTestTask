@@ -103,6 +103,22 @@ namespace CSharpTest
             Assert.IsTrue(result.Equals(new DateTime(2017, 4, 21)));
         }
 
+        [TestMethod]
+        public void TestZeroDaysCount()
+        {
+            DateTime startDate = new DateTime(2017, 4, 10);
+            int count = 0;
+            WeekEnd[] weekends = new WeekEnd[2]
+            {
+                new WeekEnd(new DateTime(2017, 4, 13), new DateTime(2017, 4, 15)),
+                new WeekEnd(new DateTime(2017, 4, 16), new DateTime(2017, 4, 17))
+            };
+
+            DateTime result = new WorkDayCalculator().Calculate(startDate, count, weekends);
+
+            Assert.IsTrue(result.Equals(startDate));
+        }
+
         #endregion
     }
 }

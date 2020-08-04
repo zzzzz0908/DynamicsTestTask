@@ -10,7 +10,12 @@ namespace CSharpTest
     {
         public DateTime Calculate(DateTime startDate, int dayCount, WeekEnd[] weekEnds)
         {
-            var finishDate = startDate.AddDays(dayCount - 1);
+            if (dayCount == 0)
+            {
+                return startDate;
+            }
+
+            var finishDate = startDate.AddDays(dayCount- 1);
 
             foreach (var weekEnd in weekEnds ?? new WeekEnd[0])
             {
